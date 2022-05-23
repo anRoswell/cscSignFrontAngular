@@ -1,0 +1,160 @@
+<div class="container">
+  <h1 style="text-align: center">INFORMES</h1>
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            Reporte solicitudes
+          </button>
+        </h2>
+      </div>
+
+      <div
+        id="collapseOne"
+        class="collapse show"
+        aria-labelledby="headingOne"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+          <div
+            style="padding: 15px; margin-bottom: 15px; border-radius: 10px"
+            class="shadow"
+          >
+            <fieldset>
+              <legend>SELECCIONE SERVICIOS A DESCARGAR</legend>
+              <div [formGroup]="form">
+                <div class="form-group">
+                  <select
+                    name="servicioId"
+                    class="form-control"
+                    formControlName="servicioId"
+                    [value]="2"
+                  >
+                    <option value="2" selected>TODOS</option>
+                    <option value="2">SERVICIO JURIDICO</option>
+                    <option value="3">AUXILIO EXEQUIAL</option>
+                    <option value="4">
+                      AUXILIO SOCIAL POR SUSPENCIÓN O PERDIDA LABORAL
+                    </option>
+                    <option value="5">AUXILIO POR MATERNIDAD</option>
+                    <option value="6">SERVICIO JURIDICO (ESTUDIANTES)</option>
+                    <option value="7">
+                      AUXILIO SOCIAL POR SUSPENCIÓN O PERDIDA LABORAAUXILIO
+                      EXEQUIAL (ESTUDIANTES)
+                    </option>
+                    <option value="7">
+                      AUXILIO SOCIAL POR SUSPENCIÓN O PERDIDA LABORAAUXILIO
+                      EXEQUIAL (ESTUDIANTES)
+                    </option>
+                    <option value="8">
+                      AUXILIO SOCIAL POR TERMINACION DEL PROCESO DE FORMACIÓN
+                      (ESTUDIANTES)
+                    </option>
+                  </select>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Desde</label>
+                    <input
+                      type="date"
+                      formControlName="fDesde"
+                      class="form-control"
+                      placeholder="First name"
+                    />
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Hasta</label>
+                    <input
+                      type="date"
+                      formControlName="fHasta"
+                      class="form-control"
+                      placeholder="Last name"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <button
+                      id="btnConsultar"
+                      class="btn btn-primary"
+                      name="btnConsultar"
+                      type="button"
+                      (click)="getInforme()"
+                    >
+                      <span class="navbar-toggler-icon"></span>
+                      Consultar
+                    </button>
+                    <div id="downloadExcel"></div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left collapsed"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            Reporte Afiliados
+          </button>
+        </h2>
+      </div>
+      <div
+        id="collapseTwo"
+        class="collapse"
+        aria-labelledby="headingThree"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+          Some placeholder content for the second accordion panel. This panel is
+          hidden by default.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left collapsed"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseThree"
+            aria-expanded="false"
+            aria-controls="collapseThree"
+          >
+            Reporte usuarios
+          </button>
+        </h2>
+      </div>
+      <div
+        id="collapseThree"
+        class="collapse"
+        aria-labelledby="collapseThree"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+          Some placeholder content for the second accordion panel. This panel is
+          hidden by default.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

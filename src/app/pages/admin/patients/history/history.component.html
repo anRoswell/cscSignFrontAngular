@@ -1,0 +1,367 @@
+<div class="container mt-2">
+  <h1 class="text-center">Historico Paciente</h1>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        id="home-tab"
+        data-toggle="tab"
+        href="#home"
+        role="tab"
+        aria-controls="home"
+        aria-selected="true"
+        >Datos básicos 1</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="profile-tab"
+        data-toggle="tab"
+        href="#profile"
+        role="tab"
+        aria-controls="profile"
+        aria-selected="false"
+        >Datos básicos 2</a
+      >
+    </li>
+  </ul>
+  <div class="tab-content mt-2" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="home"
+      role="tabpanel"
+      aria-labelledby="home-tab"
+    >
+      <div [formGroup]="form">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputEmail4">Mes</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="idMonth"
+            >
+              <option selected>Elegir...</option>
+              <option value="1">Enero</option>
+              <option value="2">Febrero</option>
+              <option value="3">Marzo</option>
+              <option value="4">Abril</option>
+              <option value="5">Mayo</option>
+              <option value="6">Junio</option>
+              <option value="7">Julio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPassword4">Año</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="idYear"
+            >
+              <option selected>Elegir...</option>
+              <option value="1">2021</option>
+              <option value="2">2022</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="fechaAtencion">Fecha atención</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="fechaAtencion"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputEmail4">Modalidad atención</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="idModalidadAtencion"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">Presencial</option>
+              <option value="1">Virtual</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPassword4">Escala del Dolor</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="escalaDolor"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="encuestaCalidadVida">Encuesta Calidad Vida</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="encuestaCalidadVida"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputEmail4">Karnofsky</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="karnofsky"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPassword4">ESAS</label>
+            <input type="number" class="form-control" formControlName="esas" />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Sgto Medicina Alternativa</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="sgtoMedicinaAlternativa"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputState">Sgto enfermeria</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="sgtoEnfermeria"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Atenciones Aux Enfermeria</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="atencionesAuxEnfermeria"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Sgto Psicologia</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="sgtoPsicologia"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputState">Sgto Nutrición</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="sgtoNutricion"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Sgto Trabajo Social</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="sgtoTrabajoSocial"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Sgto Guia Espiritual</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="sgtoGuiaEspiritual"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="tab-pane fade mt-2"
+      id="profile"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+    >
+      <div [formGroup]="form">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputState">Sgto Terapia Fisica</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="sgtoTerapiaFisica"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Total Actividad Mes</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="totalActividadesMes"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Oxigenoterapia</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="oxigenoterapia"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputState">Opioides</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="opioides"
+            >
+              <option selected>Elegir...</option>
+              <option value="0">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Nombre Medicamento</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="nombreMedicamento"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Miligramos Mes</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="miligramosMes"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputState"
+              >Otros Medicamentos Insumos Tecnologias</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="otrosMedicamentosInsumosTecnologias"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Novedad</label>
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="idNovedad"
+            >
+              <option selected>Elegir...</option>
+              <option value="1">Ninguna</option>
+              <option value="2">Desistimiento del programa</option>
+              <option value="2">Traslado pais o región</option>
+              <option value="2">Traslado de Aseguradora</option>
+              <option value="2">Cambio en el plan de tratamiento</option>
+              <option value="2">Cambio en el tiempo de tratamiento</option>
+              <option value="2">Fallecimiento</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Justificación Novedad</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="justificacionNovedad"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputState">Justificación Novedad</label>
+            <textarea
+              class="form-control"
+              name=""
+              cols="30"
+              rows="5"
+              formControlName="justificacionNovedad"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputState">Valor Factura Mes Total</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="valorFacturaMesTotal"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-secondary mx-2" (click)="back()">
+    Volver
+  </button>
+  <button type="button" class="btn btn-primary" (click)="saveForm()">
+    Registrar
+  </button>
+</div>

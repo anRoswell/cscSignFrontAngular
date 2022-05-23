@@ -1,0 +1,21 @@
+.app-message {
+  color: white;
+  font-size: 85%;
+  height: 2.85rem;
+  margin-bottom: 0.25rem;
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+  overflow: hidden;
+  padding: 0.75rem;
+  position: absolute;
+  right: 0.25rem;
+  width: 25rem;
+  z-index: 1090;
+
+  &.error {
+    background-color: #b92d3a;
+  }
+  &.success {
+    background-color: #20c997;
+  }
+}
