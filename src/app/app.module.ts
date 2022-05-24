@@ -37,6 +37,7 @@ import { DatatableComponent } from './commons/datatable/datatable.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProfesionalsModule } from './pages/admin/operaciones/profesionals.module';
+import { ParametrosModule } from './pages/admin/parametros/parametros.module';
 
 const config: SocketIoConfig = {
   url: 'http://localhost:3000/',
@@ -54,6 +55,7 @@ const config: SocketIoConfig = {
     FooterComponent,
     MessageComponent,
     DatatableComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ const config: SocketIoConfig = {
     SocketIoModule.forRoot(config),
     ModalModule.forRoot(),
     BrowserAnimationsModule,
-    ProfesionalsModule
+    ProfesionalsModule,
+    ParametrosModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

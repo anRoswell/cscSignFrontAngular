@@ -17,18 +17,27 @@
     <li class="nav-item">
       <a class="nav-link" href="#">Inicio</a>
     </li>
-    <!-- Dropdown -->
+    <!-- Operación -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Operación
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="['operacion/createprofesional']" >Profesiónales</a>
+      </div>
+    </li>
+    <!-- Parametros -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         Parametros
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['operacion/createprofesional']">Empresa</a>
-        <a class="dropdown-item" [routerLink]="['operacion/createprofesional']">Sedes</a>
-        <a class="dropdown-item" [routerLink]="['operacion/createprofesional']" >Profesiónes</a>
+        <a class="dropdown-item" [routerLink]="['parametros/profesiones']">Empresa</a>
+        <a class="dropdown-item" [routerLink]="['parametros/sedes']">Sedes</a>
+        <a class="dropdown-item" [routerLink]="['parametros/profesiones']" >Profesiónes</a>
       </div>
     </li>
-  </ul>
+  </ul>  
 
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">

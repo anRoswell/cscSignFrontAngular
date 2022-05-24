@@ -9,6 +9,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { ReportRoutingModule } from './pages/admin/report/report-routing.module';
 import { ProfesionalsRoutingModule } from './pages/admin/operaciones/profesionals-routing.module';
+import { ParametrosRoutingModule } from './pages/admin/parametros/parametros-routing.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -25,7 +26,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { useHash: true }),
     ReportRoutingModule,
-    ProfesionalsRoutingModule
+    ProfesionalsRoutingModule,
+    ParametrosRoutingModule
   ],
   exports: [RouterModule],
 })
