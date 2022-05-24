@@ -10,7 +10,7 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
     component: AdminComponent,
     children: [
-      { path: 'createprofesional', component: CreateProfesionalComponent },
+      { path: 'operacion/createprofesional', component: CreateProfesionalComponent },
     ],
   },
   

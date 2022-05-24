@@ -24,8 +24,6 @@ import { FooterComponent } from './commons/footer/footer.component';
 
 // Modulos
 import { ReportModule } from './pages/admin/report/report.module';
-import { SettingsModule } from './pages/admin/settings/settings.module';
-import { StatisticsModule } from './pages/admin/statistics/statistics.module';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -35,10 +33,6 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { DatatableComponent } from './commons/datatable/datatable.component';
-
-import { ListComponent } from './pages/admin/patients/list/list.component';
-import { FormComponent } from './pages/admin/patients/form/form.component';
-import { HistoryComponent } from './pages/admin/patients/history/history.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -60,18 +54,13 @@ const config: SocketIoConfig = {
     FooterComponent,
     MessageComponent,
     DatatableComponent,
-    ListComponent,
-    FormComponent,
-    HistoryComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    SettingsModule,
     ReportModule,
-    StatisticsModule,
     ChartsModule,
     DataTablesModule,
     NgbModule,

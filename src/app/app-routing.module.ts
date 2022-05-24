@@ -7,10 +7,7 @@ import { ErrorComponent } from './pages/error/error.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
-import { SettingsRoutingModule } from './pages/admin/settings/settings.routing';
 import { ReportRoutingModule } from './pages/admin/report/report-routing.module';
-import { StatisticsRoutingModule } from './pages/admin/statistics/statistics.routing';
-import { PatientRoutingModule } from './pages/admin/patients/patient-rounting.module';
 import { ProfesionalsRoutingModule } from './pages/admin/operaciones/profesionals-routing.module';
 
 const routes: Routes = [
@@ -27,10 +24,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { useHash: true }),
-    SettingsRoutingModule,
     ReportRoutingModule,
-    StatisticsRoutingModule,
-    PatientRoutingModule,
     ProfesionalsRoutingModule
   ],
   exports: [RouterModule],
