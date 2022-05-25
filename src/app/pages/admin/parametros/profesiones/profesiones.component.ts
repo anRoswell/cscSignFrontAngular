@@ -55,8 +55,10 @@ openModalWithComponent(action: number, profesion: any = '') {
         '...'
       ],
       title: 'Modal with component',
-      action,
-      profesion
+      parametros: {
+        action,
+        profesion
+      }
     },
     class: 'modal-xl'
   };

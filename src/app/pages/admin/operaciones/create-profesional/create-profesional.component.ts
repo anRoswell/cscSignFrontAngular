@@ -65,9 +65,9 @@ export class CreateProfesionalComponent implements OnInit {
         ],
         title: 'Modal with component',
         parametros: {
-          empresas: this.empresas,
-          sedes: this.sedes,
-          profesiones: this.profesiones
+          title: 'Modal with component',
+          action: '',
+          profesion: ''
         }
       },
       class: 'modal-xl'
