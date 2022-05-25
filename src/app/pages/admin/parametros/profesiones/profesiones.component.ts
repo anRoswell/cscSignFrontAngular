@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,  FormGroup, Validators } from '@angular/forms';
 
-//Servicios
-import { ApiService } from 'src/app/services/api.service';
-
-//Ngx Boostrap
+// Ngx Boostrap
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 
-import Swal from 'sweetalert2';
+// Service
+import { ApiService } from 'src/app/services/api.service';
+
+// Profesionales
+import { CreateProfesionalComponent } from '../../operaciones/create-profesional/create-profesional.component';
 
 @Component({
   selector: 'app-profesiones',
@@ -16,94 +16,73 @@ import Swal from 'sweetalert2';
 })
 export class ProfesionesComponent implements OnInit {
 
-  //#region Variables
-  form: FormGroup;
-  action: number=0;
-  profesion: any='';
-  position: string='top';
-  bsModalRef?: BsModalRef;
+//#region Variables
+profesiones: any;
 //#endregion
 
+//#region Constructor
+bsModalRef?: BsModalRef;
 constructor(
-  private apiService:ApiService, 
+  //Injyección de dependencia
+  private apiService: ApiService,
   private modalService: BsModalService
-) {
-  //Creación formulario reactivo
-  this.form = new FormGroup({
-    descripcion: new FormControl(null,[Validators.required]),
-    estado: new FormControl(null,[Validators.required])
+) { }
+//#endregion
+
+//#region CicleLife
+ngOnInit(): void {
+  this.getProfesiones();
+}
+//#endregion
+
+//#region InitialGet
+//Encapsulación
+private getProfesiones():void{
+  this.apiService.all("searchAllProfesiones").subscribe(resp=>{
+    this.profesiones=resp.body;
   })
 }
+//#endregion
 
-ngOnInit(): void {
-  if (this.action === 2){
-    this.setDataToForm();
-  }
-}
+//#region Modal
+openModalWithComponent(action: number, profesion: any = '') {
+  const initialState = {
+    initialState: {
+      list: [
+        'Open a modal with component',
+        'Pass your data',
+        'Do something else',
+        '...'
+      ],
+      title: 'Modal with component',
+      action,
+      profesion
+    },
+    class: 'modal-xl'
+  };
 
-//#region Formulario
-public grabarProfesion(){
-  if(!this.form.valid){
-    this.form.markAllAsTouched();
-    //alert('Todos los campos son obligatorios');
-    this.confirm();
-    return
-  }
+  this.bsModalRef = this.modalService.show(CreateProfesionalComponent, initialState);
+  this.bsModalRef.content.closeBtnName = 'Close';
 
-  if (this.action === 1){
-    console.log(`Entro aqui!!!`);
-    
-    this.apiService.create(this.form.value,'createProfesion').subscribe(response =>{
-      //alert("Proceso creado satisfactoriamente");
-      this.confirm();
-    })
-  }else{
-      this.apiService.update(this.form.value,`updateProfesion?id=${this.profesion.id}`).subscribe(respones =>{
-       //alert("Registro actualizado de manera satisfactoria");
-       this.confirm();
-      })
-  }
-
-  this.bsModalRef.hide()
+  this.modalService.onHide.subscribe((reason: string | any) => {
+    console.log(reason)
+  })
 }
 //#endregion
 
-//destructuring asigment
-public setDataToForm(){
-  this.form.patchValue({descripcion:this.profesion.description,estado:this.profesion.estado})
+//#region IteractionsTable
+public crearProfesion(){
+  console.log ("Crear");
 }
-//#endregion
 
-//#region ConfirmDialog
-confirm() {
-  Swal.fire({
-    title: 'Revisar formulario',
-    html: `¡Campos no procesados <strong></strong>!`,
-    icon: 'warning',
-    showCancelButton: false,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Ok',
-    // inputValidator: (value) => {
-    //   console.log(value.trim().length);
-    //   return new Promise((resolve) => {
-    //     if (value.trim().length !== 0 && !(value.trim().length < 10)) {
-    //       resolve(null);
-    //     } else {
-    //       if (value.trim().length === 0) {
-    //         resolve('La observación es obligatoria :)');
-    //       } else if (value.trim().length < 10) {
-    //         resolve('La observación debe contener al menos 10 caractares :)');
-    //       }
-    //     }
-    //   });
-    // },
-  }).then((result) => {
-    if (result.isConfirmed) {
-      //this.deleteForm(id);
-    } else if (result.isDismissed) {
-    }
-  });
+public editarProfesion(){
+  console.log("Editar");
+}
+
+public eliminarProfesion(profesion: any){
+  this.apiService.delete(`deleteProfesion?id=${profesion.id}`).subscribe(resp=>{
+    alert('Eliminado satisfactrriamente');
+  })
 }
 //#endregion
 

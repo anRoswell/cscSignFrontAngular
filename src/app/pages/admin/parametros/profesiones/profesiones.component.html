@@ -1,25 +1,25 @@
-<div class="container">
-    <h5>Creación Profesiones</h5>
-    <form [formGroup]="form" >
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label >Descripción</label>
-          <input type="text" class="form-control" id="descripcion" placeholder="Nombre de la profesión" formControlName="descripcion">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="estado" formControlName="estado">
-            <label class="form-check-label" for="defaultCheck1">
-              Estado profesión
-            </label>
-          </div>
-        </div>
-      </div>
-      <button (click)="grabarProfesion()" type="button" class="btn btn-primary">Grabar</button>
-    </form>
-  </div>
-  
-  
-  
+<p>Lista de profesiones</p>
+<button class="btn btn-primary" (click)="openModalWithComponent(1)">Crear</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Estado</th>
+      <th scope="col">FechaCreación</th>
+      <th scope="col">Acciones</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let profesion of profesiones">
+      <th scope="row">{{profesion.id}}</th>
+      <td>{{profesion.description}}</td>
+      <td>{{profesion.estado}}</td>
+      <td>{{profesion.createdAtDate}}</td>
+      <button class="btn btn-secondary mx-2" (click)="openModalWithComponent(2,profesion)">Editar</button>
+      <button class="btn btn-danger" (click)="eliminarProfesion(profesion)">ELiminar</button>
+    </tr>
+  </tbody>
+</table>
+
