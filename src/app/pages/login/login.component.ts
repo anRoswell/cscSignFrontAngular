@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.error = false;
     if (this.auth.isAuth()) {
-      this.router.navigate(['/admin/estadisticas/main']);
+      this.router.navigate(['admin/parametros/profesiones']);
     } else {
       this.form = new FormGroup({
         usr_email: new FormControl(null, Validators.required),
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
           const { access } = user;
           this.storage.save('_user', user);
           this.storage.save('_access', access, true);
-          this.router.navigate(['/admin/estadisticas/main']);
+          this.router.navigate(['admin/parametros/profesiones']);
         },
         ({ error, status }) => {
           console.log(`${error}`);

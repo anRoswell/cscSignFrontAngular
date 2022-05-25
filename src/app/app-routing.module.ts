@@ -14,11 +14,6 @@ import { ParametrosRoutingModule } from './pages/admin/parametros/parametros-rou
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  {
-    path: 'admin',
-    // canActivate: [AuthGuard],
-    redirectTo: '/admin/estadisticas/main',
-  },
   { path: '**', component: ErrorComponent },
 ];
 

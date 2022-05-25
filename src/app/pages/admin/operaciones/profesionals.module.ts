@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ProfesionalsRoutingModule } from './profesionals-routing.module';
-import { CreateProfesionalComponent } from './create-profesional/create-profesional.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CreateProfesionalFormComponent } from './create-profesional-form/create-profesional-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
+// Rounting
+import { ProfesionalsRoutingModule } from './profesionals-routing.module';
+
+// Componentes
+import { CreateProfesionalComponent } from './create-profesional/create-profesional.component';
+import { CreateProfesionalFormComponent } from './create-profesional-form/create-profesional-form.component';
+
+// Font Awesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+// Ngx Modal
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [CreateProfesionalComponent, CreateProfesionalFormComponent],
@@ -13,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ProfesionalsRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule
   ]
 })
 export class ProfesionalsModule { }
