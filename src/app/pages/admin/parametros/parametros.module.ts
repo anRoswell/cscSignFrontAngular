@@ -8,10 +8,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // Ngx Modal
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { EmpresaComponent } from './empresa/empresa.component';
+import { ProfesionesFormComponent } from './profesiones/profesiones-form/profesiones-form.component';
 
 
 @NgModule({
-  declarations: [SedesComponent, ProfesionesComponent],
+  declarations: [SedesComponent, ProfesionesComponent, EmpresaComponent, ProfesionesFormComponent],
   imports: [
     CommonModule,
     ParametrosRoutingModule,

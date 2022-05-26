@@ -1,3 +1,4 @@
+import { ProfesionesFormComponent } from './profesiones-form/profesiones-form.component';
 import { Component, OnInit } from '@angular/core';
 
 // Ngx Boostrap
@@ -7,7 +8,6 @@ import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { ApiService } from 'src/app/services/api.service';
 
 // Profesionales
-import { CreateProfesionalComponent } from '../../operaciones/create-profesional/create-profesional.component';
 
 @Component({
   selector: 'app-profesiones',
@@ -60,10 +60,9 @@ openModalWithComponent(action: number, profesion: any = '') {
         profesion
       }
     },
-    class: 'modal-xl'
   };
 
-  this.bsModalRef = this.modalService.show(CreateProfesionalComponent, initialState);
+  this.bsModalRef = this.modalService.show(ProfesionesFormComponent, initialState);
   this.bsModalRef.content.closeBtnName = 'Close';
 
   this.modalService.onHide.subscribe((reason: string | any) => {

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { faCoffee, faEdit, faTrashAlt , faSave} from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { ApiService } from './../../../../services/api.service'
+import { ApiService } from '../../../../../services/api.service'
 
 import Swal from 'sweetalert2';
 

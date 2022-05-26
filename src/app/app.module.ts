@@ -56,7 +56,7 @@ const config: SocketIoConfig = {
     FooterComponent,
     MessageComponent,
     DatatableComponent,
-    
+
   ],
   imports: [
     BrowserModule,

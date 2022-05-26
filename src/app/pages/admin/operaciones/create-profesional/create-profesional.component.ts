@@ -13,7 +13,7 @@ import { Isedes } from 'src/app/models/sedes.model';
 import { IProfesionales } from 'src/app/models/profesionales.model';
 
 import { ApiService } from './../../../../services/api.service'
-import { CreateProfesionalFormComponent } from '../create-profesional-form/create-profesional-form.component';
+import { CreateProfesionalFormComponent } from './create-profesional-form/create-profesional-form.component';
 
 @Component({
   selector: 'app-create-profesional',
@@ -42,7 +42,7 @@ export class CreateProfesionalComponent implements OnInit {
   //#endregion
 
   constructor(
-    private modalService: BsModalService, 
+    private modalService: BsModalService,
     private apiService: ApiService) { }
 
   //#region CYCLE LIFE
