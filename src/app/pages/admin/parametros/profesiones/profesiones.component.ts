@@ -1,3 +1,4 @@
+import { CreateProfesionesComponent } from './create-profesiones/create-profesiones.component';
 import { Component, OnInit } from '@angular/core';
 
 // Ngx Boostrap
@@ -5,9 +6,6 @@ import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 
 // Service
 import { ApiService } from 'src/app/services/api.service';
-
-// Profesionales
-import { CreateProfesionalComponent } from '../../operaciones/create-profesional/create-profesional.component';
 
 @Component({
   selector: 'app-profesiones',
@@ -46,15 +44,8 @@ private getProfesiones():void{
 
 //#region Modal
 openModalWithComponent(action: number, profesion: any = '') {
-  const initialState = {
+  const initialState : any = {
     initialState: {
-      list: [
-        'Open a modal with component',
-        'Pass your data',
-        'Do something else',
-        '...'
-      ],
-      title: 'Modal with component',
       parametros: {
         action,
         profesion
@@ -63,7 +54,7 @@ openModalWithComponent(action: number, profesion: any = '') {
     class: 'modal-xl'
   };
 
-  this.bsModalRef = this.modalService.show(CreateProfesionalComponent, initialState);
+  this.bsModalRef = this.modalService.show(CreateProfesionesComponent, initialState);
   this.bsModalRef.content.closeBtnName = 'Close';
 
   this.modalService.onHide.subscribe((reason: string | any) => {
