@@ -30,6 +30,8 @@ export class CreateProfesionalFormComponent implements OnInit {
 
   //form
   formData: FormData = new FormData();
+  tituloFormulario : string = '';
+  actionButton : string = '';
 
   //fontAwesome
   faCoffee = faCoffee;
@@ -46,7 +48,7 @@ export class CreateProfesionalFormComponent implements OnInit {
       idEmpresa: [null, Validators.required],
       idSede: [null, Validators.required],
       idProfesion: [null, Validators.required],
-      Identificacion: [{ disabled: true, value: null }, Validators.required],
+      Identificacion: [{ disabled: false, value: null }, Validators.required],
       Nombre: [null, Validators.required],
       Apellido: [null, Validators.required],
       rutaFirma: ['null'],
@@ -57,6 +59,12 @@ export class CreateProfesionalFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.action === 2) {
       //this.setDataToForm();
+      console.log('Opción 2');
+      this.tituloFormulario = 'Edición de un profesional';
+      this.actionButton = 'Actualizar';
+    }else{
+      this.tituloFormulario = 'Creación de un profesional';
+      this.actionButton = 'Guardar';
     }
     console.log('Parametros', this.parametros);
     this.empresas = this.parametros.empresas;
