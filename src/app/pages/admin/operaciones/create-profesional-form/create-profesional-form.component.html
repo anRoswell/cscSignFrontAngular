@@ -101,11 +101,11 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Ruta Img</label>
           <input
-            type="text"
-            formControlName="rutaFirma"
+            type="file"
             class="form-control"
             name="rutaFirma"
             id=""
+            (change)="onFileSelected($event)"
           />
           <small id="emailHelp" class="form-text text-muted"
             >Nro de documento del profesional.</small
