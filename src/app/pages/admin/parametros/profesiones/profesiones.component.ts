@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { CreateProfesionesComponent } from './create-profesiones/create-profesiones.component';
 
 // Ngx Boostrap
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 
 // Service
 import { ApiService } from 'src/app/services/api.service';
@@ -49,12 +49,9 @@ export class ProfesionesComponent implements OnInit {
 
   //#region Modal
   openModalWithComponent(action: string, profesion?: IProfesion) {
-    const initialState: any = {
+    const initialState : ModalOptions = {
       initialState: {
-        parametros: {
-          action,
-          profesion,
-        },
+
       },
       class: 'modal-xl',
       backdrop: true,
