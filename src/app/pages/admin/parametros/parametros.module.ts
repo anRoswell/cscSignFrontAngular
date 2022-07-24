@@ -10,14 +10,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CreateProfesionesComponent } from './profesiones/create-profesiones/create-profesiones.component';
 
+// Font Awesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [SedesComponent, ProfesionesComponent, CreateProfesionesComponent],
+  declarations: [
+    SedesComponent,
+    ProfesionesComponent,
+    CreateProfesionesComponent,
+  ],
   imports: [
     CommonModule,
     ParametrosRoutingModule,
     ReactiveFormsModule,
-    ModalModule 
-  ]
+    FontAwesomeModule,
+    ModalModule,
+  ],
 })
-export class ParametrosModule { }
+export class ParametrosModule {}

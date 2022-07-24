@@ -22,15 +22,21 @@
         <td>
           {{ profesion.createdAtDate | date: "dd/MM/yyyy HH:mm:ss":"+0000" }}
         </td>
-        <button
-          class="btn btn-secondary mx-2"
-          (click)="openModalWithComponent('edit', profesion)"
-        >
-          Editar
-        </button>
-        <button class="btn btn-danger" (click)="eliminarProfesion(profesion)">
-          ELiminar
-        </button>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            (click)="openModalWithComponent('edit', profesion)"
+          >
+            Editar
+          </button>
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="eliminarProfesion(profesion)"
+          >
+            ELiminar
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

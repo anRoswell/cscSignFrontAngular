@@ -51,10 +51,8 @@ export class ProfesionesComponent implements OnInit {
   openModalWithComponent(action: string, profesion?: IProfesion) {
     const initialState: ModalOptions = {
       initialState: {
-        parametros: {
-          action,
-          profesion,
-        },
+        action,
+        profesion,
       },
       class: 'modal-xl',
       backdrop: true,
