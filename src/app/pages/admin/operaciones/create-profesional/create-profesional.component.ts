@@ -8,7 +8,7 @@ import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 
 // Interfaces
 import { Iempresas } from 'src/app/models/empresas.model';
-import { Iprofesiones } from 'src/app/models/profesiones.model';
+import { IProfesion } from 'src/app/models/profesiones.model';
 import { Isedes } from 'src/app/models/sedes.model';
 import { IProfesionales } from 'src/app/models/profesionales.model';
 
@@ -18,32 +18,33 @@ import { CreateProfesionalFormComponent } from '../create-profesional-form/creat
 @Component({
   selector: 'app-create-profesional',
   templateUrl: './create-profesional.component.html',
-  styleUrls: ['./create-profesional.component.scss']
+  styleUrls: ['./create-profesional.component.scss'],
 })
 export class CreateProfesionalComponent implements OnInit {
   //#region VARIABLES
 
   // Generales
-  empresas?:  Array<Iempresas>
-  sedes?: Array<Iprofesiones>
-  profesiones?: Array<Isedes>
-  profesionales?: Array<IProfesionales>
-  parametros: any
+  empresas?: Array<Iempresas>;
+  sedes?: Array<IProfesion>;
+  profesiones?: Array<Isedes>;
+  profesionales?: Array<IProfesionales>;
+  parametros: any;
 
   // Font Awesome
-  faCoffee:IconDefinition=faCoffee
-  faEdit:IconDefinition=faEdit
-  faTrashAlt:IconDefinition=faTrashAlt
-  faSave:IconDefinition=faSave
-  faPlusSquare:IconDefinition=faPlusSquare
+  faCoffee: IconDefinition = faCoffee;
+  faEdit: IconDefinition = faEdit;
+  faTrashAlt: IconDefinition = faTrashAlt;
+  faSave: IconDefinition = faSave;
+  faPlusSquare: IconDefinition = faPlusSquare;
 
   // Modal
   bsModalRef?: BsModalRef;
   //#endregion
 
   constructor(
-    private modalService: BsModalService, 
-    private apiService: ApiService) { }
+    private modalService: BsModalService,
+    private apiService: ApiService
+  ) {}
 
   //#region CYCLE LIFE
   ngOnInit(): void {
@@ -52,7 +53,7 @@ export class CreateProfesionalComponent implements OnInit {
   //#endregion
 
   //#region Consultar
-  consultar(){}
+  consultar() {}
 
   newRegister() {
     const initialState = {
@@ -61,53 +62,63 @@ export class CreateProfesionalComponent implements OnInit {
           'Open a modal with component',
           'Pass your data',
           'Do something else',
-          '...'
+          '...',
         ],
         title: 'Modal with component',
         parametros: {
           empresas: this.empresas,
           sedes: this.sedes,
-          profesiones: this.profesiones
-        }
+          profesiones: this.profesiones,
+        },
       },
-      class: 'modal-xl'
+      class: 'modal-xl',
     };
-    this.bsModalRef = this.modalService.show(CreateProfesionalFormComponent, initialState);
+    this.bsModalRef = this.modalService.show(
+      CreateProfesionalFormComponent,
+      initialState
+    );
     this.bsModalRef.content.closeBtnName = 'Close';
   }
   //#endregion
 
   //#region
-  public getParametros(){
-    this.apiService.all('initialParameters').subscribe(resp=>{
-        this.empresas = resp.body.empresas;
-        this.sedes = resp.body.sedes;
-        this.profesiones = resp.body.profesiones;
-        this.profesionales = resp.body.profesionales;
+  public getParametros() {
+    this.apiService.all('initialParameters').subscribe((resp) => {
+      this.empresas = resp.body.empresas;
+      this.sedes = resp.body.sedes;
+      this.profesiones = resp.body.profesiones;
+      this.profesionales = resp.body.profesionales;
     });
   }
 
-  EditopenModalWithComponent(action: number, profesional: any ){
+  EditopenModalWithComponent(action: number, profesional: any) {
     const initialState = {
       initialState: {
-        list: ['Open a modal with component','Pass your data','Do something else','...'],
+        list: [
+          'Open a modal with component',
+          'Pass your data',
+          'Do something else',
+          '...',
+        ],
         title: 'Modal with component',
         action,
         profesional,
-        parametros: {empresas: this.empresas,
-                     sedes: this.sedes,
-                     profesiones: this.profesiones}
+        parametros: {
+          empresas: this.empresas,
+          sedes: this.sedes,
+          profesiones: this.profesiones,
+        },
       },
-      class: 'modal-xl'
+      class: 'modal-xl',
     };
-    console.log('Profesionales ',profesional);
-    this.bsModalRef = this.modalService.show(CreateProfesionalFormComponent, initialState);
+    console.log('Profesionales ', profesional);
+    this.bsModalRef = this.modalService.show(
+      CreateProfesionalFormComponent,
+      initialState
+    );
     this.bsModalRef.content.closeBtnName = 'Close';
 
-    this.modalService.onHide.subscribe((reason: string | any) => {
-    })
-
+    this.modalService.onHide.subscribe((reason: string | any) => {});
   }
   //#endregion
-
 }

@@ -1,25 +1,37 @@
-<p>Lista de profesiones</p>
-<button class="btn btn-primary" (click)="openModalWithComponent(1)">Crear</button>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Estado</th>
-      <th scope="col">FechaCreación</th>
-      <th scope="col">Acciones</th>
+<div class="container">
+  <p>Lista de profesiones</p>
+  <button class="btn btn-primary" (click)="openModalWithComponent('create')">
+    Crear
+  </button>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let profesion of profesiones">
-      <th scope="row">{{profesion.id}}</th>
-      <td>{{profesion.description}}</td>
-      <td>{{profesion.estado}}</td>
-      <td>{{profesion.createdAtDate}}</td>
-      <button class="btn btn-secondary mx-2" (click)="openModalWithComponent(2,profesion)">Editar</button>
-      <button class="btn btn-danger" (click)="eliminarProfesion(profesion)">ELiminar</button>
-    </tr>
-  </tbody>
-</table>
-
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Estado</th>
+        <th scope="col">FechaCreación</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let profesion of profesiones">
+        <th scope="row">{{ profesion.id }}</th>
+        <td>{{ profesion.description }}</td>
+        <td>{{ profesion.estado }}</td>
+        <td>
+          {{ profesion.createdAtDate | date: "dd/MM/yyyy HH:mm:ss":"+0000" }}
+        </td>
+        <button
+          class="btn btn-secondary mx-2"
+          (click)="openModalWithComponent('edit', profesion)"
+        >
+          Editar
+        </button>
+        <button class="btn btn-danger" (click)="eliminarProfesion(profesion)">
+          ELiminar
+        </button>
+      </tr>
+    </tbody>
+  </table>
+</div>

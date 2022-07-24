@@ -26,11 +26,9 @@ import { FooterComponent } from './commons/footer/footer.component';
 import { ReportModule } from './pages/admin/report/report.module';
 
 import { ChartsModule } from 'ng2-charts';
-import { DataTablesModule } from 'angular-datatables';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { DatatableComponent } from './commons/datatable/datatable.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -55,8 +53,6 @@ const config: SocketIoConfig = {
     LoadingComponent,
     FooterComponent,
     MessageComponent,
-    DatatableComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -65,14 +61,13 @@ const config: SocketIoConfig = {
     AppRoutingModule,
     ReportModule,
     ChartsModule,
-    DataTablesModule,
     NgbModule,
     SweetAlert2Module.forRoot(),
     SocketIoModule.forRoot(config),
     ModalModule.forRoot(),
     BrowserAnimationsModule,
     ProfesionalsModule,
-    ParametrosModule
+    ParametrosModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

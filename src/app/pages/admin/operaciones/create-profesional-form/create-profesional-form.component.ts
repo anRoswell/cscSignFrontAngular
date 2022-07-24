@@ -1,99 +1,104 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faCoffee, faEdit, faTrashAlt , faSave} from '@fortawesome/free-solid-svg-icons';
+import {
+  faCoffee,
+  faEdit,
+  faTrashAlt,
+  faSave,
+} from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { ApiService } from './../../../../services/api.service'
+import { ApiService } from './../../../../services/api.service';
 
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-profesional-form',
   templateUrl: './create-profesional-form.component.html',
-  styleUrls: ['./create-profesional-form.component.scss']
+  styleUrls: ['./create-profesional-form.component.scss'],
 })
 export class CreateProfesionalFormComponent implements OnInit {
- //#region Variables
+  //#region Variables
 
   //Parameters Modal
-  sedes: any
-  profesionales: any
-  profesional: any
-  empresas: any
-  parametros: any = {}
-  action: number=0
+  sedes: any;
+  profesionales: any;
+  profesional: any;
+  empresas: any;
+  parametros: any = {};
+  action: number = 0;
 
   //form
-  formData = new FormData
+  formData: FormData = new FormData();
 
   //fontAwesome
-  faCoffee=faCoffee
-  faEdit=faEdit
-  faTrashAlt=faTrashAlt
-  faSave=faSave
+  faCoffee = faCoffee;
+  faEdit = faEdit;
+  faTrashAlt = faTrashAlt;
+  faSave = faSave;
 
   //Formulario
-  form:FormGroup
+  form: FormGroup;
 
   //#endregion
-  constructor(
-    private fb: FormBuilder,
-    private apiService: ApiService,
-  ) {
+  constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.form = this.fb.group({
-      idEmpresa:[null, Validators.required],
+      idEmpresa: [null, Validators.required],
       idSede: [null, Validators.required],
       idProfesion: [null, Validators.required],
-      Identificacion: [{disabled: true, value: null}, Validators.required],
+      Identificacion: [{ disabled: true, value: null }, Validators.required],
       Nombre: [null, Validators.required],
       Apellido: [null, Validators.required],
       rutaFirma: ['null'],
       estado: [true],
-    })
+    });
   }
 
   ngOnInit(): void {
-    if (this.action===2){
+    if (this.action === 2) {
       //this.setDataToForm();
     }
-    console.log('Parametros', this.parametros)
+    console.log('Parametros', this.parametros);
     this.empresas = this.parametros.empresas;
     this.sedes = this.parametros.sedes;
     this.profesionales = this.parametros.profesiones;
-    this.setDataToForm()
+    this.setDataToForm();
   }
 
   //#region Form
-  UpdateForm(){
+  UpdateForm() {
     if (!this.form.valid) {
       //alert(`Todos los campos son obligatorios`)
-      this.confirm()
-      return
+      this.confirm();
+      return;
     }
-    this.formData.append('id',this.profesional.id)
-    this.formData.append('idEmpresa',this.form.get('idEmpresa')?.value)
-    this.formData.append('idSede',this.form.get('idSede')?.value)
-    this.formData.append('idProfesion',this.form.get('idProfesion')?.value)
-    this.formData.append('Identificacion',this.form.get('Identificacion')?.value)
-    this.formData.append('Nombre',this.form.get('Nombre')?.value)
-    this.formData.append('Apellido',this.form.get('Apellido')?.value)
-    this.formData.append('rutaFirma',this.form.get('rutaFirma')?.value)
-    this.formData.append('estado',this.form.get('estado')?.value)
 
+    this.formData.append('id', this.profesional.id);
+    this.formData.append('idEmpresa', this.form.get('idEmpresa')?.value);
+    this.formData.append('idSede', this.form.get('idSede')?.value);
+    this.formData.append('idProfesion', this.form.get('idProfesion')?.value);
+    this.formData.append(
+      'Identificacion',
+      this.form.get('Identificacion')?.value
+    );
+    this.formData.append('Nombre', this.form.get('Nombre')?.value);
+    this.formData.append('Apellido', this.form.get('Apellido')?.value);
+    this.formData.append('rutaFirma', this.form.get('rutaFirma')?.value);
+    this.formData.append('estado', this.form.get('estado')?.value);
 
-    console.log('FormData',this.form.value);
+    console.log('FormData', this.form.value);
     // this.apiService.update(this.formData, 'updateOperation').subscribe((resp)=>{
     //   console.log(resp);
     // })
   }
 
   onFileSelected(event: any) {
-    const file:File = event.target.files[0];
+    const file: File = event.target.files[0];
 
     if (file) {
-        this.formData.append("file", file, file.name);
+      this.formData.append('file', file, file.name);
     }
-}
+  }
   //#endregion
 
   //#region
@@ -127,8 +132,8 @@ export class CreateProfesionalFormComponent implements OnInit {
       }
     });
   }
- //destructuring asigment
-  public setDataToForm(){
+  //destructuring asigment
+  public setDataToForm() {
     this.form.patchValue({
       idSede: this.profesional.idSede,
       idProfesion: this.profesional.idProfesion,
@@ -137,9 +142,8 @@ export class CreateProfesionalFormComponent implements OnInit {
       Nombre: this.profesional.Nombre,
       Apellido: this.profesional.Apellido,
       rutaFirma: this.profesional.rutaFirma,
-      estado: this.profesional.estado
-      })
+      estado: this.profesional.estado,
+    });
   }
   //#endregion
-
 }

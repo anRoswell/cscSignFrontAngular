@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  server: 'http://localhost:3000',
-  //server: 'http://localhost.syspotec.co:3000',
+  server: 'http://localhost:4000',
+  //server: 'http://localhost.syspotec.co:4000',
   api: '/api/v1.0/',
 };
 
