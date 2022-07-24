@@ -1,90 +1,138 @@
 <div class="container p-3" [formGroup]="form">
-    <fieldset class="mb-9">
-      <div class="row" style="justify-content: space-between;">
-        <div class="col col-md-6">
-          <h2>
-            <fa-icon [icon]="faCoffee"></fa-icon> Edición profesionales
-          </h2>
+  <fieldset class="mb-9">
+    <div class="row" style="justify-content: space-between">
+      <div class="col col-md-6">
+        <h2><fa-icon [icon]="faCoffee"></fa-icon> Edición profesionales</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Empresa</label>
+          <select
+            class="form-control"
+            id="exampleFormControlSelect1"
+            formControlName="idEmpresa"
+          >
+            <option *ngFor="let empresa of empresas" value="{{ empresa.id }}">
+              {{ empresa.nombre }}
+            </option>
+          </select>
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
         </div>
       </div>
-      <div class="row">
-        <div class="col col-md-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Empresa</label>
-            <select class="form-control" id="exampleFormControlSelect1" formControlName="idEmpresa">
-              <option *ngFor="let empresa of empresas" value={{empresa.id}}>{{empresa.nombre}}</option>
-            </select>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-        </div>
-        <div class="col col-md-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Sede</label>
-            <select class="form-control" id="exampleFormControlSelect1" formControlName="idSede">
-              <option *ngFor="let sede of sedes" value={{sede.id}}>{{sede.description}}</option>
-            </select>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
+      <div class="col col-md-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Sede</label>
+          <select
+            class="form-control"
+            id="exampleFormControlSelect1"
+            formControlName="idSede"
+          >
+            <option *ngFor="let sede of sedes" value="{{ sede.id }}">
+              {{ sede.description }}
+            </option>
+          </select>
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
         </div>
       </div>
-      <div class="row">
-        <div class="col col-md-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Especialidad</label>
-            <select class="form-control" id="exampleFormControlSelect1" formControlName="idProfesion">
-              <option *ngFor="let profesional of profesionales" value={{profesional.id}}>{{profesional.description}}</option>
-            </select>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-        </div>
-        <div class="col col-md-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Identificación</label>
-            <input type="text" formControlName="Identificacion" class="form-control">
-            <small id="emailHelp" class="form-text text-muted">Nro de documento del profesional.</small>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-md-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Nombres</label>
-            <input type="text" formControlName="Nombre" class="form-control">
-            <small id="emailHelp" class="form-text text-muted">Nro de documento del profesional.</small>
-          </div>
-        </div>
-        <div class="col col-md-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Apellidos</label>
-            <input type="text" formControlName="Apellido" class="form-control">
-            <small id="emailHelp" class="form-text text-muted">Nro de documento del profesional.</small>
-          </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Especialidad</label>
+          <select
+            class="form-control"
+            id="exampleFormControlSelect1"
+            formControlName="idProfesion"
+          >
+            <option
+              *ngFor="let profesional of profesionales"
+              value="{{ profesional.id }}"
+            >
+              {{ profesional.description }}
+            </option>
+          </select>
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
         </div>
       </div>
-      <div class="row">
-        <div class="col col-md-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Ruta Img</label>
-            <input type="text" formControlName="rutaFirma" class="form-control" name="rutaFirma" id="">
-            <small id="emailHelp" class="form-text text-muted">Nro de documento del profesional.</small>
-          </div>
-        </div>
-        <div class="col col-md-6">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" formControlName="estado" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Estado del profesional</label>
-          </div>
-        </div>
-  
-      </div>
-      <div class="row">
-        <div class="col col-md-6">
-          <button type="button" class="btn btn-primary" (click)="UpdateForm()">
-            <fa-icon [icon]="faSave"></fa-icon>
-            Actualizar
-          </button>
+      <div class="col col-md-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Identificación</label>
+          <input
+            type="text"
+            formControlName="Identificacion"
+            class="form-control"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >Nro de documento del profesional.</small
+          >
         </div>
       </div>
-    </fieldset>
-  </div>
-  
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nombres</label>
+          <input type="text" formControlName="Nombre" class="form-control" />
+          <small id="emailHelp" class="form-text text-muted"
+            >Nro de documento del profesional.</small
+          >
+        </div>
+      </div>
+      <div class="col col-md-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Apellidos</label>
+          <input type="text" formControlName="Apellido" class="form-control" />
+          <small id="emailHelp" class="form-text text-muted"
+            >Nro de documento del profesional.</small
+          >
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ruta Img</label>
+          <input
+            type="file"
+            class="form-control"
+            name="rutaFirma"
+            id=""
+            (change)="onFileSelected($event)"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >Url de la imagen.</small
+          >
+        </div>
+      </div>
+      <div class="col col-md-6">
+        <div class="custom-control custom-switch">
+          <input
+            type="checkbox"
+            formControlName="estado"
+            class="custom-control-input"
+            id="customSwitch1"
+          />
+          <label class="custom-control-label" for="customSwitch1"
+            >Estado del profesional</label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+        <button type="button" class="btn btn-primary" (click)="UpdateForm()">
+          <fa-icon [icon]="faSave"></fa-icon>
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </fieldset>
+</div>

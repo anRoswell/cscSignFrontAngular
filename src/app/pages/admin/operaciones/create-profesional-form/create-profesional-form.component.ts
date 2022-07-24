@@ -56,13 +56,12 @@ export class CreateProfesionalFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.action === 2) {
-      //this.setDataToForm();
+      this.setDataToForm();
     }
     console.log('Parametros', this.parametros);
     this.empresas = this.parametros.empresas;
     this.sedes = this.parametros.sedes;
     this.profesionales = this.parametros.profesiones;
-    this.setDataToForm();
   }
 
   //#region Form
