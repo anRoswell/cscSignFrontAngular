@@ -1,9 +1,8 @@
-
 <div class="container p-3" [formGroup]="form">
   <fieldset class="mb-9">
     <div class="row" style="justify-content: space-between">
       <div class="col col-md-6">
-        <h2><fa-icon [icon]="faCoffee"></fa-icon> Edición profesionales</h2>
+        <h2><fa-icon [icon]="faCoffee"></fa-icon> {{ tituloFormulario }}</h2>
       </div>
     </div>
     <div class="row">
@@ -131,7 +130,7 @@
       <div class="col col-md-6">
         <button type="button" class="btn btn-primary" (click)="UpdateForm()">
           <fa-icon [icon]="faSave"></fa-icon>
-          Actualizar
+          {{ actionButton }}
         </button>
       </div>
     </div>
