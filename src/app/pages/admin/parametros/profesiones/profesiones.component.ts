@@ -63,7 +63,7 @@ export class ProfesionesComponent implements OnInit {
         profesion,
       },
 
-      class: 'modal-xl',
+      class: 'modal-md',
       backdrop: true,
     };
 
