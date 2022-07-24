@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+//Font_Awesome
+import {
+  faEdit,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
+
 // Componentes
 import { CreateProfesionesComponent } from './create-profesiones/create-profesiones.component';
 
@@ -21,6 +27,8 @@ export class ProfesionesComponent implements OnInit {
   //#region Variables
   profesiones: Array<IProfesion>;
   bsModalRef?: BsModalRef;
+  faEdit =  faEdit;
+  faTrashAlt = faTrashAlt;
   //#endregion
 
   //#region Constructor
