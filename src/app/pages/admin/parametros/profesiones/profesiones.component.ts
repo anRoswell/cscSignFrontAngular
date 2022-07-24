@@ -54,6 +54,7 @@ export class ProfesionesComponent implements OnInit {
         action,
         profesion,
       },
+
       class: 'modal-xl',
       backdrop: true,
     };
@@ -83,7 +84,7 @@ export class ProfesionesComponent implements OnInit {
     this.apiService
       .delete(`deleteProfesion?id=${profesion.id}`)
       .subscribe((resp) => {
-        alert('Eliminado satisfactrriamente');
+        alert('Eliminado satisfactoriamente');
       });
   }
   //#endregion
