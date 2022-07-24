@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { controllers } from 'chart.js';
 import { IProfesion } from 'src/app/models/profesiones.model';
 
 @Component({

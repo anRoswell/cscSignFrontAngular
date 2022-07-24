@@ -25,23 +25,13 @@ import { FooterComponent } from './commons/footer/footer.component';
 // Modulos
 import { ReportModule } from './pages/admin/report/report.module';
 
-import { ChartsModule } from 'ng2-charts';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Ngx Modal
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ProfesionalsModule } from './pages/admin/operaciones/profesionals.module';
 import { ParametrosModule } from './pages/admin/parametros/parametros.module';
-
-const config: SocketIoConfig = {
-  url: 'http://localhost:3000/',
-  options: {},
-};
 
 @NgModule({
   declarations: [
@@ -60,10 +50,7 @@ const config: SocketIoConfig = {
     ReactiveFormsModule,
     AppRoutingModule,
     ReportModule,
-    ChartsModule,
-    NgbModule,
     SweetAlert2Module.forRoot(),
-    SocketIoModule.forRoot(config),
     ModalModule.forRoot(),
     BrowserAnimationsModule,
     ProfesionalsModule,

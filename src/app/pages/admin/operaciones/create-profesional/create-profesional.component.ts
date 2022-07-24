@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 //Font_Awesome
-import { faCoffee, faEdit, faTrashAlt , faSave, faPlusSquare, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {
+  faCoffee,
+  faEdit,
+  faTrashAlt,
+  faSave,
+  faPlusSquare,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
 
 //Ng-bootstrap
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
@@ -12,7 +19,7 @@ import { IProfesion } from 'src/app/models/profesiones.model';
 import { Isedes } from 'src/app/models/sedes.model';
 import { IProfesionales } from 'src/app/models/profesionales.model';
 
-import { ApiService } from './../../../../services/api.service'
+import { ApiService } from './../../../../services/api.service';
 import { CreateProfesionalFormComponent } from '../create-profesional-form/create-profesional-form.component';
 
 @Component({
@@ -56,14 +63,8 @@ export class CreateProfesionalComponent implements OnInit {
   consultar() {}
 
   newRegister() {
-    const initialState = {
+    const initialState: ModalOptions = {
       initialState: {
-        list: [
-          'Open a modal with component',
-          'Pass your data',
-          'Do something else',
-          '...',
-        ],
         title: 'Modal with component',
         parametros: {
           empresas: this.empresas,
