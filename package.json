@@ -35,7 +35,7 @@
     "chartjs-plugin-zoom": "^0.7.7",
     "ng-image-slider": "^2.8.0",
     "ng2-charts": "^2.4.3",
-    "ngx-bootstrap": "^6.2.0",
+    "ngx-bootstrap": "^8.0.0",
     "ngx-socket-io": "^3.4.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
