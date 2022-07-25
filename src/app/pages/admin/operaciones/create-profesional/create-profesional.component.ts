@@ -62,10 +62,11 @@ export class CreateProfesionalComponent implements OnInit {
   //#region Consultar
   consultar() {}
 
-  newRegister() {
+  newRegister(action) {
     const initialState: ModalOptions = {
       initialState: {
         title: 'Modal with component',
+        action,
         parametros: {
           empresas: this.empresas,
           sedes: this.sedes,
@@ -92,7 +93,7 @@ export class CreateProfesionalComponent implements OnInit {
     });
   }
 
-  EditopenModalWithComponent(action: number, profesional: any) {
+  EditopenModalWithComponent(action: string, profesional: any) {
     const initialState = {
       initialState: {
         list: [
