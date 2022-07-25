@@ -59,7 +59,6 @@ export class CreateProfesionalFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.action === 2) {
       this.setDataToForm();
-      console.log('Opción 2');
       this.tituloFormulario = 'Edición de un profesional';
       this.actionButton = 'Actualizar';
     } else {
@@ -74,7 +73,6 @@ export class CreateProfesionalFormComponent implements OnInit {
   //#region Form
   UpdateForm() {
     if (!this.form.valid) {
-      //alert(`Todos los campos son obligatorios`)
       this.confirm();
       return;
     }
