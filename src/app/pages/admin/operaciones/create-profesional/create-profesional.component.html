@@ -6,7 +6,7 @@
           </div>
           <div>
               <h1>
-                  <button type="button" class="btn btn-success" (click)="newRegister()">
+                  <button type="button" class="btn btn-success" (click)="newRegister('new')">
                       <fa-icon [icon]="faPlusSquare"></fa-icon>
                   </button>
               </h1>
@@ -83,7 +83,7 @@
             <td>{{profesional.rutaFirma}}</td>
             <td>{{profesional.createAtDate | date:"mediumDate"}}</td>
             <td>
-                <button type="button" class="btn mx-2" (click)="EditopenModalWithComponent(2,profesional)">
+                <button type="button" class="btn mx-2" (click)="EditopenModalWithComponent('edit',profesional)">
                     <fa-icon [icon]="faEdit"></fa-icon>
                 </button>
                 <button type="button" class="btn " ng-click="click()">

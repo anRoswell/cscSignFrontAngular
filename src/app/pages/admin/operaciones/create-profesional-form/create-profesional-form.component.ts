@@ -26,7 +26,7 @@ export class CreateProfesionalFormComponent implements OnInit {
   profesional: any;
   empresas: any;
   parametros: any = {};
-  action: number = 0;
+  action: string = '';
 
   //form
   formData: FormData = new FormData();
@@ -57,7 +57,7 @@ export class CreateProfesionalFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.action === 2) {
+    if (this.action === '2') {
       this.setDataToForm();
       console.log('Opción 2');
       this.tituloFormulario = 'Edición de un profesional';
@@ -71,15 +71,53 @@ export class CreateProfesionalFormComponent implements OnInit {
     this.profesionales = this.parametros.profesiones;
   }
 
-  //#region Form
-  UpdateForm() {
+  accionProfesionales(){
     if (!this.form.valid) {
       //alert(`Todos los campos son obligatorios`)
       this.confirm();
       return;
     }
 
-    this.formData.append('id', this.profesional.id);
+    switch (this.action) {
+      case 'new':
+        console.log(this.action);
+        this.CreateProfesional();
+        break;
+      case 'edit':
+        this.UpdateProfesional();
+        break;
+      default:
+        break;
+    }
+  }
+
+  //#region Form
+
+  CreateProfesional(){
+
+    this.setformData();
+    this.apiService.create('createOperation', this.formData).subscribe((resp)=>{
+      console.log(resp);
+    })
+  }
+
+  UpdateProfesional() {
+    console.log('');
+
+    if (!this.form.valid) {
+      //alert(`Todos los campos son obligatorios`)
+      this.confirm();
+      return;
+    }
+
+    console.log('FormData', this.form.value);
+    this.apiService.update('updateOperation', this.formData).subscribe((resp)=>{
+       console.log(resp);
+    })
+  }
+
+  setformData(){
+    this.formData.append('id', '0');
     this.formData.append('idEmpresa', this.form.get('idEmpresa')?.value);
     this.formData.append('idSede', this.form.get('idSede')?.value);
     this.formData.append('idProfesion', this.form.get('idProfesion')?.value);
@@ -89,13 +127,8 @@ export class CreateProfesionalFormComponent implements OnInit {
     );
     this.formData.append('Nombre', this.form.get('Nombre')?.value);
     this.formData.append('Apellido', this.form.get('Apellido')?.value);
-    this.formData.append('rutaFirma', this.form.get('rutaFirma')?.value);
+    this.formData.append('rutaFirma', 'Mientras tanto');
     this.formData.append('estado', this.form.get('estado')?.value);
-
-    console.log('FormData', this.form.value);
-    // this.apiService.update(this.formData, 'updateOperation').subscribe((resp)=>{
-    //   console.log(resp);
-    // })
   }
 
   onFileSelected(event: any) {
