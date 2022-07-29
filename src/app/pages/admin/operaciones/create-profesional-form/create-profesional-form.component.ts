@@ -45,6 +45,7 @@ export class CreateProfesionalFormComponent implements OnInit {
   //#endregion
   constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.form = this.fb.group({
+      id: '0',
       idEmpresa: [null, Validators.required],
       idSede: [null, Validators.required],
       idProfesion: [null, Validators.required],
@@ -57,7 +58,7 @@ export class CreateProfesionalFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.action === '2') {
+    if (this.action === 'edit') {
       this.setDataToForm();
       this.tituloFormulario = 'Edición de un profesional';
       this.actionButton = 'Actualizar';
@@ -82,6 +83,7 @@ export class CreateProfesionalFormComponent implements OnInit {
         this.CreateProfesional();
         break;
       case 'edit':
+        console.log(this.action);
         this.UpdateProfesional();
         break;
       default:
@@ -101,7 +103,8 @@ export class CreateProfesionalFormComponent implements OnInit {
 
   UpdateProfesional() {
     console.log('');
-
+    //this.setformData();
+    this.setformData();
     if (!this.form.valid) {
       //alert(`Todos los campos son obligatorios`)
       this.confirm();
@@ -115,14 +118,11 @@ export class CreateProfesionalFormComponent implements OnInit {
   }
 
   setformData(){
-    this.formData.append('id', '0');
+    this.formData.append('id', this.form.get('id')?.value);
     this.formData.append('idEmpresa', this.form.get('idEmpresa')?.value);
     this.formData.append('idSede', this.form.get('idSede')?.value);
     this.formData.append('idProfesion', this.form.get('idProfesion')?.value);
-    this.formData.append(
-      'Identificacion',
-      this.form.get('Identificacion')?.value
-    );
+    this.formData.append('Identificacion',this.form.get('Identificacion')?.value);
     this.formData.append('Nombre', this.form.get('Nombre')?.value);
     this.formData.append('Apellido', this.form.get('Apellido')?.value);
     this.formData.append('rutaFirma', 'Mientras tanto');
@@ -171,15 +171,18 @@ export class CreateProfesionalFormComponent implements OnInit {
   }
   //destructuring asigment
   public setDataToForm() {
+    console.log(this.profesional);
+    const { id,idSede,idProfesion, idEmpresa,Identificacion,Nombre,Apellido,rutaFirma,estado } = this.profesional;
     this.form.patchValue({
-      idSede: this.profesional.idSede,
-      idProfesion: this.profesional.idProfesion,
-      idEmpresa: this.profesional.idEmpresa,
-      Identificacion: this.profesional.Identificacion,
-      Nombre: this.profesional.Nombre,
-      Apellido: this.profesional.Apellido,
-      rutaFirma: this.profesional.rutaFirma,
-      estado: this.profesional.estado,
+      id: id,
+      idSede: idSede,
+      idProfesion: idProfesion,
+      idEmpresa: idEmpresa,
+      Identificacion: Identificacion,
+      Nombre: Nombre,
+      Apellido: Apellido,
+      rutaFirma: rutaFirma,
+      estado: estado,
     });
   }
   //#endregion
