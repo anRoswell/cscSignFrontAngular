@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
+//Font_Awesome
+import {
+  faSave,
+} from '@fortawesome/free-solid-svg-icons';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Isedes } from 'src/app/models/sedes.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,6 +25,9 @@ export class SedeFormComponent implements OnInit {
        //variables del modal
        action: string;
        sede: Isedes;
+
+        //fontAwesome
+        faSave =  faSave;
        //#endregion
   constructor(
     //inyección de dependencias
