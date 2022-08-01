@@ -12,12 +12,14 @@ import { CreateProfesionesComponent } from './profesiones/create-profesiones/cre
 
 // Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SedeFormComponent } from './sedes/sede-form/sede-form.component';
 
 @NgModule({
   declarations: [
     SedesComponent,
     ProfesionesComponent,
     CreateProfesionesComponent,
+    SedeFormComponent,
   ],
   imports: [
     CommonModule,

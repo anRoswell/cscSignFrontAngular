@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>{{ nombreForm }}</h1>
+  <fieldset class="mb-3">
+    <form [formGroup]="form">
+      <div class="row">
+          <div class="col col-md-6">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Sede</label>
+                  <input type="text" class="form-control" name="profesion" id="" formControlName="description">
+                  <small id="emailHelp" class="form-text text-muted">Ingrese nombre de sede.</small>
+                </div>
+          </div>
+          <div class="col col-md-6">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Estado</label>
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" formControlName="estado">
+                    <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+                  </div>
+                  <small id="emailHelp" class="form-text text-muted"></small>
+                </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col col-md-6">
+              <button type="button" class="btn btn-primary" (click)="actiobBtn()">
+                  <!--<fa-icon [icon]="faSave"></fa-icon>-->
+                  {{ nombreAccionBtn }}
+              </button>
+          </div>
+      </div>
+    </form>
+  </fieldset>
+</div>
+
+

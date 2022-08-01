@@ -33,7 +33,7 @@ export class ProfesionesComponent implements OnInit {
 
   //#region Constructor
   constructor(
-    //Injyección de dependencia
+    //Inyección de dependencia
     private apiService: ApiService,
     private modalService: BsModalService
   ) {}

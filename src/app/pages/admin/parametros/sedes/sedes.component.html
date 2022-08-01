@@ -1,1 +1,44 @@
-<p>sedes works!</p>
+<div class="container">
+  <p>Sedes</p>
+  <button class="btn btn-primary" (click)="openModalWithComponent('new')">
+    Crear
+  </button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Estado</th>
+        <th scope="col">FechaCreación</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sede of sedes">
+        <th scope="row">{{ sede.id }}</th>
+        <td>{{ sede.description }}</td>
+        <td>{{ sede.estado }}</td>
+        <td>
+          {{ sede.createdAtDate | date: "dd/MM/yyyy HH:mm:ss":"+0000" }}
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-light mx-2 btn-sm"
+            (click)="openModalWithComponent('edit', sede)"
+          >
+          <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
+          <button
+            type="button"
+            class="btn btn-light btn-sm"
+            (click)="eliminarSede(sede)"
+          >
+          <fa-icon [icon]="faTrashAlt"></fa-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

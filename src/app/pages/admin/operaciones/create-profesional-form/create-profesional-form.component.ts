@@ -6,10 +6,9 @@ import {
   faTrashAlt,
   faSave,
 } from '@fortawesome/free-solid-svg-icons';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ApiService } from './../../../../services/api.service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,28 +20,30 @@ export class CreateProfesionalFormComponent implements OnInit {
   //#region Variables
 
   //Parameters Modal
-  sedes: any;
-  profesionales: any;
-  profesional: any;
-  empresas: any;
-  parametros: any = {};
-  action: string = '';
+    sedes: any;
+    profesionales: any;
+    profesional: any;
+    empresas: any;
+    parametros: any = {};
+    action: string = '';
 
   //form
-  formData: FormData = new FormData();
-  tituloFormulario: string = '';
-  actionButton: string = '';
+    formData: FormData = new FormData();
+    tituloFormulario: string = '';
+    actionButton: string = '';
 
   //fontAwesome
-  faCoffee = faCoffee;
-  faEdit = faEdit;
-  faTrashAlt = faTrashAlt;
-  faSave = faSave;
+    faCoffee = faCoffee;
+    faEdit = faEdit;
+    faTrashAlt = faTrashAlt;
+    faSave = faSave;
 
   //Formulario
-  form: FormGroup;
+    form: FormGroup;
 
   //#endregion
+
+  //#region Constructor
   constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.form = this.fb.group({
       id: '0',
@@ -56,20 +57,23 @@ export class CreateProfesionalFormComponent implements OnInit {
       estado: [true],
     });
   }
+  //#endregion
 
-  ngOnInit(): void {
-    if (this.action === 'edit') {
-      this.setDataToForm();
-      this.tituloFormulario = 'Edición de un profesional';
-      this.actionButton = 'Actualizar';
-    } else {
-      this.tituloFormulario = 'Creación de un profesional';
-      this.actionButton = 'Guardar';
-    }
-    this.empresas = this.parametros.empresas;
-    this.sedes = this.parametros.sedes;
-    this.profesionales = this.parametros.profesiones;
+  //#region CicleLife
+    ngOnInit(): void {
+      if (this.action === 'edit') {
+        this.setDataToForm();
+        this.tituloFormulario = 'Edición de un profesional';
+        this.actionButton = 'Actualizar';
+      } else {
+        this.tituloFormulario = 'Creación de un profesional';
+        this.actionButton = 'Guardar';
+      }
+      this.empresas = this.parametros.empresas;
+      this.sedes = this.parametros.sedes;
+      this.profesionales = this.parametros.profesiones;
   }
+  //#endregion
 
   accionProfesionales(){
     if (!this.form.valid) {
@@ -92,50 +96,49 @@ export class CreateProfesionalFormComponent implements OnInit {
   }
 
   //#region Form
+    CreateProfesional(){
 
-  CreateProfesional(){
-
-    this.setformData();
-    this.apiService.create('createOperation', this.formData).subscribe((resp)=>{
-      console.log(resp);
-    })
-  }
-
-  UpdateProfesional() {
-    console.log('');
-    //this.setformData();
-    this.setformData();
-    if (!this.form.valid) {
-      //alert(`Todos los campos son obligatorios`)
-      this.confirm();
-      return;
+      this.setformData();
+      this.apiService.create('createOperation', this.formData).subscribe((resp)=>{
+        console.log(resp);
+      })
     }
 
-    console.log('FormData', this.form.value);
-    this.apiService.update('updateOperation', this.formData).subscribe((resp)=>{
-       console.log(resp);
-    })
-  }
+    UpdateProfesional() {
+      console.log('');
+      //this.setformData();
+      this.setformData();
+      if (!this.form.valid) {
+        //alert(`Todos los campos son obligatorios`)
+        this.confirm();
+        return;
+      }
 
-  setformData(){
-    this.formData.append('id', this.form.get('id')?.value);
-    this.formData.append('idEmpresa', this.form.get('idEmpresa')?.value);
-    this.formData.append('idSede', this.form.get('idSede')?.value);
-    this.formData.append('idProfesion', this.form.get('idProfesion')?.value);
-    this.formData.append('Identificacion',this.form.get('Identificacion')?.value);
-    this.formData.append('Nombre', this.form.get('Nombre')?.value);
-    this.formData.append('Apellido', this.form.get('Apellido')?.value);
-    this.formData.append('rutaFirma', 'Mientras tanto');
-    this.formData.append('estado', this.form.get('estado')?.value);
-  }
-
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-
-    if (file) {
-      this.formData.append('file', file, file.name);
+      console.log('FormData', this.form.value);
+      this.apiService.update('updateOperation', this.formData).subscribe((resp)=>{
+         console.log(resp);
+      })
     }
-  }
+
+    setformData(){
+      this.formData.append('id', this.form.get('id')?.value);
+      this.formData.append('idEmpresa', this.form.get('idEmpresa')?.value);
+      this.formData.append('idSede', this.form.get('idSede')?.value);
+      this.formData.append('idProfesion', this.form.get('idProfesion')?.value);
+      this.formData.append('Identificacion',this.form.get('Identificacion')?.value);
+      this.formData.append('Nombre', this.form.get('Nombre')?.value);
+      this.formData.append('Apellido', this.form.get('Apellido')?.value);
+      this.formData.append('rutaFirma', 'Mientras tanto');
+      this.formData.append('estado', this.form.get('estado')?.value);
+    }
+
+    onFileSelected(event: any) {
+      const file: File = event.target.files[0];
+
+      if (file) {
+        this.formData.append('file', file, file.name);
+      }
+    }
   //#endregion
 
   //#region
@@ -169,6 +172,7 @@ export class CreateProfesionalFormComponent implements OnInit {
       }
     });
   }
+
   //destructuring asigment
   public setDataToForm() {
     console.log(this.profesional);
