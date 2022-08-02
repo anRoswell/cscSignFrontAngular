@@ -4,6 +4,7 @@
 @import "~bootswatch/dist/lumen/variables";
 @import "~bootswatch/dist/lumen/bootswatch";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
 button.dropdown-item:focus {
   outline: none;
   outline: none;
@@ -37,8 +38,6 @@ button.dropdown-item:focus {
   background-color: #f5f5f5;
 }
 
-.nav-link{
+.nav-link {
   color: #f5f5f5 !important;
 }
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
