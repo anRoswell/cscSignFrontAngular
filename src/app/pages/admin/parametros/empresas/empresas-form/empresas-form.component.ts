@@ -5,38 +5,38 @@ import {
   faSave,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Isedes } from 'src/app/models/sedes.model';
+import { Iempresas } from 'src/app/models/empresas.model';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-sede-form',
-  templateUrl: './sede-form.component.html',
-  styleUrls: ['./sede-form.component.scss']
+  selector: 'app-empresas-form',
+  templateUrl: './empresas-form.component.html',
+  styleUrls: ['./empresas-form.component.scss']
 })
-export class SedeFormComponent implements OnInit {
+export class EmpresasFormComponent implements OnInit {
+  //#region  VARIABLES
+  form: FormGroup;
+  nombreAccionBtn: string = '';
+  nombreForm: string = '';
 
-       //#region  VARIABLES
-       form: FormGroup;
-       nombreAccionBtn: string = '';
-       nombreForm: string = '';
+  //variables del modal
+  action: string;
+  empresas: Iempresas;
 
-       //variables del modal
-       action: string;
-       sede: Isedes;
+   //fontAwesome
+   faSave =  faSave;
+  //#endregion
 
-        //fontAwesome
-        faSave =  faSave;
-       //#endregion
   constructor(
-    //inyección de dependencias
     private apiService: ApiService
   ) {
     this.form = new FormGroup({
       id: new FormControl(''),
-      description: new FormControl('', [
+      nit: new FormControl('',[
+        Validators.required,
+      ]),
+      nombre: new FormControl('', [
         Validators.required,
         Validators.min(4),
         Validators.max(50),
@@ -45,7 +45,7 @@ export class SedeFormComponent implements OnInit {
     });
 
     console.log(this.action);
-    console.log(this.sede);
+    console.log(this.empresas);
   }
 
   ngOnInit(): void {
@@ -54,11 +54,11 @@ export class SedeFormComponent implements OnInit {
   ngAfterViewInit() {
     switch (this.action) {
       case 'new':
-        this.nombreForm = 'Creación sedes'
+        this.nombreForm = 'Creación Empresa'
         this.nombreAccionBtn = 'Guardar';
         break;
       case 'edit':
-        this.nombreForm = 'Actualizar sedes'
+        this.nombreForm = 'Actualizar Empresas'
         this.nombreAccionBtn = 'Actualizar';
         this.setFormulario();
         break;
@@ -68,10 +68,11 @@ export class SedeFormComponent implements OnInit {
   // Asignación de un campo a un formulario
   private setFormulario(): void {
     //destructuring
-    const { id, description, estado } = this.sede;
+    const { id, nit, nombre, estado } = this.empresas;
     this.form.patchValue({
       id: id,
-      description: description,
+      nit: nit,
+      nombre: nombre,
       estado: estado,
     });
   }
@@ -91,19 +92,19 @@ export class SedeFormComponent implements OnInit {
 
   createAction() {
     const dataForm = this.form.value;
-    console.log('Creando sede',dataForm);
-    this.apiService.create('createSede', dataForm).subscribe((resp) => {
+    console.log('Creando empresa',dataForm);
+    this.apiService.create('createEmpresa', dataForm).subscribe((resp) => {
       console.log(resp);
     });
   }
 
   updateAction() {
-    const dataForm: Isedes = this.form.value;
+    const dataForm: Iempresas = this.form.value;
     console.log(this.action);
     console.log('console update', dataForm);
 
     this.apiService
-      .update(`updateSede/${dataForm.id}`, dataForm)
+      .update(`updateEmpresa/${dataForm.id}`, dataForm)
       .subscribe((resp) => {
         console.log(resp);
       });

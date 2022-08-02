@@ -1,0 +1,47 @@
+<div class="container">
+  <p>Sedes</p>
+  <button class="btn btn-primary" (click)="openModalWithComponent('new')">
+    Crear
+  </button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nit</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Estado</th>
+        <th scope="col">FechaCreación</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let empresa of empresas">
+        <th scope="row">{{ empresa.id }}</th>
+        <td>{{ empresa.nit }}</td>
+        <td>{{ empresa.nombre }}</td>
+        <td>{{ empresa.estado }}</td>
+        <td>
+          {{ empresa.createdAtDate | date: "dd/MM/yyyy HH:mm:ss":"+0000" }}
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-light mx-2 btn-sm"
+            (click)="openModalWithComponent('edit', empresa)"
+          >
+          <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
+          <button
+            type="button"
+            class="btn btn-light btn-sm"
+            (click)="eliminarEmpresa(empresa)"
+          >
+          <fa-icon [icon]="faTrashAlt"></fa-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
