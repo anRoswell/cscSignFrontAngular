@@ -32,6 +32,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ProfesionalsModule } from './pages/admin/operaciones/profesionals.module';
 import { ParametrosModule } from './pages/admin/parametros/parametros.module';
+import { UserModule } from './pages/admin/user/user.module';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,8 @@ import { ParametrosModule } from './pages/admin/parametros/parametros.module';
     BrowserAnimationsModule,
     ProfesionalsModule,
     ParametrosModule,
+    UserModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
