@@ -14,10 +14,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Ngx Modal
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { CompGrupo1Component } from './create-profesional-form/comp-grupo1/comp-grupo1.component';
+import { CompGrupo2Component } from './create-profesional-form/comp-grupo2/comp-grupo2.component';
 
 @NgModule({
-  declarations: [CreateProfesionalComponent, CreateProfesionalFormComponent],
+  declarations: [CreateProfesionalComponent, CreateProfesionalFormComponent, CompGrupo1Component, CompGrupo2Component],
   imports: [
     CommonModule,
     ProfesionalsRoutingModule,

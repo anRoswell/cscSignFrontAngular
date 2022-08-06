@@ -20,10 +20,10 @@ export class CreateProfesionalFormComponent implements OnInit {
   //#region Variables
 
   //Parameters Modal
-    sedes: any;
+    sedes: any = [];
     profesionales: any;
     profesional: any;
-    empresas: any;
+    empresas: any = [];
     parametros: any = {};
     action: string = '';
 
