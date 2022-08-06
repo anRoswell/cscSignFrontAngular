@@ -1,1 +1,106 @@
-<p>edit works!</p>
+<form [formGroup]="form">
+  <div class="container p-3">
+    <fieldset class="mb-9">
+      <div class="row" style="justify-content: space-between">
+        <div class="col col-md-6">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <input
+              type="email"
+              formControlName="usr_email"
+              class="form-control"
+            />
+            <small id="usuario" class="form-text text-muted"
+              >Correo electrónico</small
+            >
+          </div>
+        </div>
+        <div class="col col-md-6">
+          <div class="form-group">
+            <label for="nombres">Nombre Completo</label>
+            <input
+              type="text"
+              formControlName="usr_nameComplete"
+              class="form-control"
+            />
+            <small id="nombres" class="form-text text-muted"
+              >Nombre completo del usuario.</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="form-group">
+            <label for="tipoId">Tipo de Identificación</label>
+            <input type="text" formControlName="identificationTypeId" class="form-control" />
+            <small id="tipoId" class="form-text text-muted"
+              >Tipo de identificación.</small
+            >
+          </div>
+        </div>
+        <div class="col col-md-6">
+          <div class="form-group">
+            <label for="cedula">Cédula</label>
+            <input type="number" formControlName="usr_cedula" class="form-control" />
+            <small id="cedula" class="form-text text-muted"
+              >Nro de documento del profesional.</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="form-group">
+            <label for="celular">Número Celular</label>
+            <input type="number" formControlName="usr_nroCelular" class="form-control" />
+            <small id="celular" class="form-text text-muted"
+              >Número celular.</small
+            >
+          </div>
+        </div>
+        <div class="col col-md-6">
+          <div class="form-group">
+            <label for="telefonoFijo">Teléfono Fijo</label>
+            <input type="number" formControlName="usr_telefonoFijo" class="form-control" />
+            <small id="telefonoFijo" class="form-text text-muted"
+              >Número teléfono fijo.</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" formControlName="usr_direccion" class="form-control" />
+            <small id="direccion" class="form-text text-muted"
+              >Dirección.</small
+            >
+          </div>
+        </div>
+        <div class="col col-md-6">
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <input type="text" formControlName="usr_status" class="form-control" />
+            <small id="estado" class="form-text text-muted"
+              >Estado del cliente.</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-6">
+          <button type="button" class="btn btn-primary" (click)="accionActualizar()">
+            <fa-icon [icon]="faSave"></fa-icon>
+            Actualizar
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</form>
