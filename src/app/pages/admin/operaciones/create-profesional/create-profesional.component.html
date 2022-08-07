@@ -1,7 +1,7 @@
 <div class="container">
   <fieldset class="mb-3">
-    <div class="row">
-      <div class="col" style="justify-content: space-between">
+    <div style="display: flex; justify-content: space-around">
+      <div class="col">
         <h2><fa-icon [icon]="faCoffee"></fa-icon> Profesionales</h2>
       </div>
       <div>
@@ -12,85 +12,119 @@
             (click)="newRegister('new')"
           >
             <fa-icon [icon]="faPlusSquare"></fa-icon>
+            Nuevo
           </button>
         </h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col col-md-6">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Empresa</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option *ngFor="let empresa of empresas" value="{{ empresa.id }}">
-              {{ empresa.nombre }}
-            </option>
-          </select>
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
+
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne"
           >
+            Filtro de consulta
+          </button>
+        </h2>
+        <div
+          id="collapseOne"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <div class="row my-2">
+              <div class="col col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Empresa</label
+                  >
+                  <select class="form-select" id="exampleFormControlSelect1">
+                    <option
+                      *ngFor="let empresa of empresas"
+                      value="{{ empresa.id }}"
+                    >
+                      {{ empresa.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Sede</label
+                  >
+                  <select class="form-select" id="exampleFormControlSelect1">
+                    <option *ngFor="let sede of sedes" value="{{ sede.id }}">
+                      {{ sede.description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row my-2">
+              <div class="col col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Especialidad</label
+                  >
+                  <select class="form-select" id="exampleFormControlSelect1">
+                    <option
+                      *ngFor="let profesion of profesiones"
+                      value="{{ profesion.id }}"
+                    >
+                      {{ profesion.description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Nro Documento</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="nrodocumento"
+                    id=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row my-2">
+              <div class="col col-md-6">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  ng-click="consultar()"
+                >
+                  <fa-icon [icon]="faSave"></fa-icon>
+                  Consultar
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col col-md-6">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Sede</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option *ngFor="let sede of sedes" value="{{ sede.id }}">
-              {{ sede.description }}
-            </option>
-          </select>
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-md-6">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Especialidad</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option
-              *ngFor="let profesion of profesiones"
-              value="{{ profesion.id }}"
-            >
-              {{ profesion.description }}
-            </option>
-          </select>
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
-        </div>
-      </div>
-      <div class="col col-md-6">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Nro Documento</label>
-          <input type="number" class="form-control" name="nrodocumento" id="" />
-          <small id="emailHelp" class="form-text text-muted"
-            >Nro de documento del profesional.</small
-          >
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-md-6">
-        <button type="button" class="btn btn-primary" ng-click="consultar()">
-          <fa-icon [icon]="faSave"></fa-icon>
-          Consultar
-        </button>
       </div>
     </div>
   </fieldset>
 
-  <table class="table">
+  <table class="table table-striped table-hover table-sm">
     <thead>
       <tr>
         <th scope="col">Empresa</th>
         <th scope="col">Sede</th>
         <th scope="col">Profesion</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">RutaImagen</th>
-        <th scope="col">CreadoCuando</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Creado</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -99,9 +133,8 @@
         <th scope="row">{{ profesional.empresa }}</th>
         <td>{{ profesional.Sede }}</td>
         <td>{{ profesional.Profesion }}</td>
-        <td>{{ profesional.Nombre }}</td>
-        <td>{{ profesional.Apellido }}</td>
-        <td><img [src]="profesional.rutaFirma" width="50" height="50" /></td>
+        <td>{{ profesional.Nombre }} {{ profesional.Apellido }}</td>
+        <td><img [src]="profesional.rutaAbsoluta" width="50" height="50" /></td>
         <td>{{ profesional.createAtDate | date: "mediumDate" }}</td>
         <td>
           <button

@@ -47,13 +47,14 @@ export class CreateProfesionalFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.form = this.fb.group({
       id: '0',
-      idEmpresa: [null, Validators.required],
-      idSede: [null, Validators.required],
-      idProfesion: [null, Validators.required],
-      Identificacion: [{ disabled: false, value: null }, Validators.required],
-      Nombre: [null, Validators.required],
-      Apellido: [null, Validators.required],
+      idEmpresa: ['', Validators.required],
+      idSede: ['', Validators.required],
+      idProfesion: ['', Validators.required],
+      Identificacion: [{ disabled: false, value: '' }, Validators.required],
+      Nombre: ['', Validators.required],
+      Apellido: ['', Validators.required],
       estado: [true],
+      rutaRelativa: [''],
     });
   }
   //#endregion
@@ -105,20 +106,19 @@ export class CreateProfesionalFormComponent implements OnInit {
   }
 
   UpdateProfesional() {
-    console.log('');
+    this.cleanDataForm();
     //this.setformData();
     this.setformData();
     if (!this.form.valid) {
-      //alert(`Todos los campos son obligatorios`)
       this.confirm();
       return;
     }
 
-    console.log('FormData', this.form.value);
     this.apiService
       .update('updateOperation', this.formData)
       .subscribe((resp) => {
         console.log(resp);
+        alert('Actualización exitosa');
       });
   }
 
@@ -135,6 +135,7 @@ export class CreateProfesionalFormComponent implements OnInit {
     this.formData.append('Nombre', this.form.get('Nombre')?.value);
     this.formData.append('Apellido', this.form.get('Apellido')?.value);
     this.formData.append('estado', this.form.get('estado')?.value);
+    this.formData.append('rutaRelativa', this.form.get('rutaRelativa')?.value);
   }
 
   onFileSelected(event: any) {
@@ -189,7 +190,7 @@ export class CreateProfesionalFormComponent implements OnInit {
       Identificacion,
       Nombre,
       Apellido,
-      rutaFirma,
+      rutaRelativa,
       estado,
     } = this.profesional;
     this.form.patchValue({
@@ -200,7 +201,7 @@ export class CreateProfesionalFormComponent implements OnInit {
       Identificacion: Identificacion,
       Nombre: Nombre,
       Apellido: Apellido,
-      rutaFirma: rutaFirma,
+      rutaRelativa: rutaRelativa,
       estado: estado,
     });
   }
@@ -213,8 +214,8 @@ export class CreateProfesionalFormComponent implements OnInit {
     this.formData.delete('Identificacion');
     this.formData.delete('Nombre');
     this.formData.delete('Apellido');
-    this.formData.delete('rutaFirma');
     this.formData.delete('estado');
+    this.formData.delete('rutaRelativa');
   }
   //#endregion
 }
