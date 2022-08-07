@@ -53,13 +53,23 @@ export class EditComponent implements OnInit {
     this.setDataToForm();
   }
 
-  accionActualizar(){
-    console.log('Hola')
+  UpdateUser(){
+      console.log('');
+      this.setformData();
+      // if (!this.form.valid) {
+      //   //alert(`Todos los campos son obligatorios`)
+      //   this.confirm();
+      //   return;
+      // }
+
+      console.log('FormData', this.form.value);
+      this.apiService
+        .update(`updateUsers/${this.form.value.id}`, this.formData)
+        .subscribe((resp) => {
+          console.log(resp);
+        });
   }
 
-  onFileSelected(){
-    console.log('Hola')
-  }
   //#region formularios
    //destructuring asigment
    public setDataToForm() {
@@ -77,6 +87,33 @@ export class EditComponent implements OnInit {
       usr_telefonoFijo: usr_telefonoFijo,
       usr_status: usr_status,
     });
+  }
+
+  setformData() {
+    this.cleanDataForm();
+    this.formData.append('id', this.form.get('id')?.value);
+    this.formData.append('identificationTypeId', this.form.get('identificationTypeId')?.value);
+    this.formData.append('profileId', this.form.get('profileId')?.value);
+    this.formData.append('usr_cedula', this.form.get('usr_cedula')?.value);
+    this.formData.append('usr_direccion',this.form.get('usr_direccion')?.value);
+    this.formData.append('usr_email', this.form.get('usr_email')?.value);
+    this.formData.append('usr_nameComplete', this.form.get('usr_nameComplete')?.value);
+    this.formData.append('usr_nroCelular', this.form.get('usr_nroCelular')?.value);
+    this.formData.append('usr_telefonoFijo', this.form.get('usr_telefonoFijo')?.value);
+    this.formData.append('usr_status', this.form.get('usr_status')?.value);
+  }
+
+  private cleanDataForm() {
+    this.formData.delete('id');
+    this.formData.delete('identificationTypeId');
+    this.formData.delete('profileId');
+    this.formData.delete('usr_cedula');
+    this.formData.delete('usr_direccion');
+    this.formData.delete('usr_email');
+    this.formData.delete('usr_nameComplete');
+    this.formData.delete('usr_nroCelular');
+    this.formData.delete('usr_telefonoFijo');
+    this.formData.delete('usr_status');
   }
   //#endregion
 
