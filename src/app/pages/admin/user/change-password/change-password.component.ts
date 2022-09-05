@@ -53,6 +53,9 @@ export class ChangePasswordComponent implements OnInit {
     // }
 
      console.log('FormData', this.form.value);
+     if (this.form.get('new_password').value != this.form.get('rep_new_password').value){
+        alert('Contraseñas no coinciden');
+     }
     // this.apiService
     //   .update(`updateUsers/${this.form.value.id}`, this.formData)
     //   .subscribe((resp) => {
