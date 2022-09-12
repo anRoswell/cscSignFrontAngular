@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {  faSave, } from '@fortawesome/free-solid-svg-icons';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-new-user',
@@ -9,18 +10,21 @@ import {  faSave, } from '@fortawesome/free-solid-svg-icons';
 })
 export class NewUserComponent implements OnInit {
 
-    //#region Variables
-    usuario: any;
+  //#region Variables
+  usuario: any;
+  action = 'new';
 
-    //Formulario
-    form: FormGroup;
+  //Formulario
+  form: FormGroup;
 
-    //fontAwesome
-    faSave = faSave;
+  //fontAwesome
+  faSave = faSave;
 
-    //#endregion
+  //#endregion    
+
   constructor(
     private fb: FormBuilder,
+    private apiService: ApiService
   ) {
     this.form = this.fb.group({
       id: '0',
@@ -39,15 +43,44 @@ export class NewUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  CreateUser(){
-    console.log('');
+  ngAfterContentInit(){
+    switch (this.action) {
+      case 'edit':
+        this.setDataForm()
+        break;    
+      default:
+        break;
+    }
+  }
 
-    console.log('FormData', this.form.value);
-    // this.apiService
-    //   .update(`createUsers/${this.form.value.id}`, this.formData)
-    //   .subscribe((resp) => {
-    //     console.log(resp);
-    //   });
+  CreateUser(){
+    if (!this.form.valid) {
+      alert("Todos los campos son obligatorios")
+      return
+    }
+    
+    console.log('Form: ', this.form.value);
+    this.apiService
+      .create(`createUsers`, this.form.value)
+      .subscribe((resp) => {
+        console.log(resp);
+      });
+  }
+
+  setDataForm(){
+    const {id, identificationTypeId, profileId, usr_cedula, usr_direccion, usr_email, usr_nameComplete, usr_nroCelular, usr_telefonoFijo, usr_status} = this.usuario
+    this.form.pathValue({
+      id: id,
+      identificationTypeId: identificationTypeId,
+      profileId: profileId,
+      usr_cedula: usr_cedula,
+      usr_direccion: usr_direccion,
+      usr_email: usr_email,
+      usr_nameComplete: usr_nameComplete,
+      usr_nroCelular: usr_nroCelular,
+      usr_telefonoFijo: usr_telefonoFijo,
+      usr_status: usr_status,
+    })
   }
 
 }
