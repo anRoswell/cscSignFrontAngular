@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   faSave,
 } from '@fortawesome/free-solid-svg-icons';
+import { ApiService } from 'src/app/services/api.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-change-password',
@@ -14,19 +16,20 @@ export class ChangePasswordComponent implements OnInit {
     //#region Variables
     usuario: any;
 
-    //form
-    formData: FormData = new FormData();
-
     //fontAwesome
     faSave = faSave;
 
     //Formulario
     form: FormGroup;
 
+    user: any
+
     //#endregion
 
   constructor(
     private fb: FormBuilder,
+    private storageService:StorageService,
+    private apiService: ApiService
   ) {
     this.form = this.fb.group({
       id: '0',
@@ -37,61 +40,37 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.user = await this.storageService.read('_user')
+    //console.log(this.user)
+    this.setDataToForm()
   }
 
   UpdateUser(){
-    this.setformData();
-
-    // if (this.usuario.new_password != this.usuario.rep_new_password){
-    //     alert('Pasword nuevo no coincide con redigitado')
-    // }
-    // if (!this.form.valid) {
-    //   //alert(`Todos los campos son obligatorios`)
-    //   this.confirm();
-    //   return;
-    // }
-
-     console.log('FormData', this.form.value);
+     console.log('Form', this.form.value);
      if (this.form.get('new_password').value != this.form.get('rep_new_password').value){
         alert('Contraseñas no coinciden');
+        return;
      }
-    // this.apiService
-    //   .update(`updateUsers/${this.form.value.id}`, this.formData)
-    //   .subscribe((resp) => {
-    //     console.log(resp);
-    //   });
+    this.apiService
+      .update(`passmbusers/${this.form.value.id}`, this.form.value)
+      .subscribe((resp) => {
+        console.log(resp);
+      });
   }
 
   //#region formularios
   //destructuring asigment
   public setDataToForm() {
-    console.log(this.usuario);
-    const { id, usr_email, usr_password, new_password, rep_new_password } = this.usuario.body;
+    //console.log(this.user);
+    const { id, usr_email } = this.user.body;
     this.form.patchValue({
       id: id,
       usr_email: usr_email,
-      usr_password: usr_password,
-      new_password: new_password,
-      rep_new_password: rep_new_password,
+      usr_password: null,
+      new_password: null,
+      rep_new_password: null,
     });
-  }
-
-  setformData() {
-    this.cleanDataForm();
-    this.formData.append('id', this.form.get('id')?.value);
-    this.formData.append('usr_email', this.form.get('usr_email')?.value);
-    this.formData.append('usr_password', this.form.get('usr_password')?.value);
-    this.formData.append('new_password', this.form.get('new_password')?.value);
-    this.formData.append('rep_new_password',this.form.get('rep_new_password')?.value);
-  }
-
-  private cleanDataForm() {
-    this.formData.delete('id');
-    this.formData.delete('usr_email');
-    this.formData.delete('usr_password');
-    this.formData.delete('new_password');
-    this.formData.delete('rep_new_password');
   }
   //#endregion
 }

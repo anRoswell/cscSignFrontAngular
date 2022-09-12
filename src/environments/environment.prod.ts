@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  server: 'http://localhost:3000',
+  server: 'http://firma.cuidadoseguro.com.co:4000',
   api: '/api/v1.1',
 };
